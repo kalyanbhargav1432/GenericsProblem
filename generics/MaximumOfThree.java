@@ -1,10 +1,10 @@
 package generics;
 
 public class MaximumOfThree {
-	Float x, y, z;
+	String x, y, z;
 
-	public Float maximum(Float x, Float y, Float z) {
-		Float value = x;
+	public String maximum(String x, String y, String z) {
+		String value = x;
 		if (y.compareTo(value) > 0)
 			value = y;
 		if (z.compareTo(value) > 0)
