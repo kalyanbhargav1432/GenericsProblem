@@ -1,24 +1,27 @@
 package generics;
 
 public class MaximumOfThree<T extends Comparable<T>> {
-	T x, y, z;
+	T[] array;
 
-	public MaximumOfThree(T x, T y, T z) {
-		this.x = x;
-		this.y = y;
-		this.z = z;
+	public MaximumOfThree(T[] array) {
+		this.array = array;
 	}
 
 	public T testMaximum() {
-		return MaximumOfThree.testMaximum(x, y, z);
+		return MaximumOfThree.testMaximum(array);
 	}
 
-	public static <T extends Comparable<T>> T testMaximum(T x, T y, T z) {
-		T value = x;
-		if (y.compareTo(value) > 0)
-			value = y;
-		if (z.compareTo(value) > 0)
-			value = z;
-		return value;
+	public static <T extends Comparable<T>> T testMaximum(T[] array) {
+		for (int i = 0; i < array.length; i++) {
+			for (int j = i; j < array.length; j++) {
+				if (array[i].compareTo(array[j]) < 0) {
+					T k = array[i];
+					array[i] = array[j];
+					array[j] = k;
+				}
+			}
+		}
+		System.out.println("maximum:" + array[0]);
+		return array[0];
 	}
 }
